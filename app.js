@@ -13,23 +13,39 @@ let team = []
 
 const manager = () => {
     prompt ([
-    {
-        type: 'input',
-    name: 'name',
-    message: 'Enter Manager\'s name:'
-    },
-    {
-        type: 'input',
-        name: 'id',
-        message: 'Enter Manager\'s ID: '
-    },
-    {
-        type: 'input',
-        name: 'officeNumber',
-        message: 'Enter Office Number'
-    }
+        {
+            type: 'input',
+        name: 'name',
+        message: 'Enter Manager\'s name: '
+        },
+        {
+            type: 'input',
+            name: 'id',
+            message: 'Enter Manager\'s ID: '
+        },
+        {
+            type: 'input',
+            name: 'email',
+            message: 'Enter Email Address: '
+        }
+        {
+            type: 'input',
+            name: 'officeNumber',
+            message: 'Enter Office Number: '
+        }
     ])
+        .then(({ name, id, email, officeNumber }) => {
+            let manager1 = new Manager(name, id, email, officeNumber)
+            console.log(manager1)
+            team.push(manager1)
+            writeManager(manager1)
+        })
+        .catch(err => console.log(err))
 } 
+
+const writeManager = () => {
+    
+}
 
 // const top = `
 // <!DOCTYPE html>
