@@ -96,11 +96,11 @@ let manQs = () => {
         }
     ])
         .then(({ name, title, id, email, officeNumber }) => {
-            let newManager = new Manager(name, title, id, email, officeNumber)
-            console.log(newManager)
+            let manager = new Manager(name, title, id, email, officeNumber)
+            console.log(manager)
             // Pushes manager answers into the team array
-            team.push(newManager)
-            createManager(newManager)
+            team.push(manager)
+            newManager(manager)
         })
         .catch(err => console.log(err))
 }
@@ -135,11 +135,11 @@ let engQs = () => {
         }
     ])
         .then(({ name, title, id, email, github }) => {
-            let newEngineer = new Engineer(name, title, id, email, github)
-            console.log(newEngineer)
+            let engineer = new Engineer(name, title, id, email, github)
+            console.log(engineer)
             // pushes answers from engineer to the team array
-            team.push(newEngineer)
-            createEngineer(newEngineer)
+            team.push(engineer)
+            newEngineer(engineer)
         })
         .catch(err => console.log(err))
 }
@@ -174,17 +174,17 @@ let intQs = () => {
         }
     ])
         .then(({ name, title,  id, email, school }) => {
-            let newIntern = new Intern(name, title, id, email, school)
-            console.log(newIntern)
-            team.push(newIntern)
-            createIntern(newIntern)
+            let intern = new Intern(name, title, id, email, school)
+            console.log(intern)
+            team.push(intern)
+            newIntern(intern)
         })
         .catch(err => console.log(err))
 }
 
 
 // Adds answers to html that gets appended to html file        
-let createManager = (answers) => {
+let newManager = (answers) => {
     appendFileSync('./output/index.html', `
     <div class="card text-white bg-success mb-3" style="max-width: 18rem;">
         <div class="card-header"><span><i class="fas fa-mug-hot"></i></span> ${answers.title}</div>
@@ -204,7 +204,7 @@ let createManager = (answers) => {
 }
 
 // Adds answers to html that gets appended to html file
-let createEngineer = (answers) => {
+let newEngineer = (answers) => {
     appendFileSync('./output/index.html', `
     <div class="card text-white bg-primary mb-3" style="max-width: 18rem;">
         <div class="card-header"><span><i class="fas fa-keyboard"></i></span> ${answers.title}</div>
@@ -224,7 +224,7 @@ let createEngineer = (answers) => {
 }
 
 //Adds answers to html that gets appended to html file
-let createIntern = (answers) => {
+let newIntern = (answers) => {
     appendFileSync('./output/index.html', `
     <div class="card text-white bg-secondary mb-3" style="max-width: 18rem;">
         <div class="card-header"><span><i class="fas fa-pencil-alt"></i></span> ${answers.title}</div>
