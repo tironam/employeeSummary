@@ -4,13 +4,13 @@ class Employee {
         this.title = title
         this.id = 100
         this.getName = () => {
-            return this.name
+            return name
         }
         this.getId = () => {
-            return this.id
+            return id
         }
         this.getEmail = () => {
-            return this.email
+            return email
         }
         this.getRole = () => {
             return 'Employee'

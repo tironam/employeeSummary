@@ -1,15 +1,18 @@
 const { prompt } = require('inquirer')
-const { writeFile } = require('fs')
+const { writeFile, readFile, appendFile } = require('fs')
 const { promisify } = require('util')
 const Manager = require('./Lib/Manager')
 const Engineer = require('./Lib/Engineer')
 const Intern = require('./Lib/Intern')
 
 const writeFileSync = promisify(writeFile)
+const readFileSync = promisify(readFile)
+const appendFileSync = promisify(appendFile)
 
 let team = []
 
-const manager = [
+const manager = () => {
+    prompt ([
     {
         type: 'input',
     name: 'name',
@@ -25,7 +28,9 @@ const manager = [
         name: 'officeNumber',
         message: 'Enter Office Number'
     }
-]
+    ])
+} 
+
 // const top = `
 // <!DOCTYPE html>
 // <html lang="en">
