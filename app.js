@@ -42,8 +42,8 @@ let chooseRole = () => {
         {
             type: 'list',
             name: 'role',
-            message: 'Please choose the role of the employee:',
-            choices: ['Manager', 'Engineer', 'Intern', 'Finish Roster']
+            message: 'Pick employee role. To finish, select "Done"',
+            choices: ['Manager', 'Engineer', 'Intern', 'Done']
         }
     ])
         .then(({ role }) => {
@@ -72,26 +72,31 @@ let manQs = () => {
         {
             type: 'input',
             name: 'name',
-            message: 'Manager\'s name:'
+            message: 'Name:'
+        },
+        {
+            type: 'input',
+            name: 'title',
+            message: 'Title:'
         },
         {
             type: 'input',
             name: 'id',
-            message: 'Manager\'s ID:'
+            message: 'ID:'
         },
         {
             type: 'input',
             name: 'email',
-            message: 'Manager\'s email:'
+            message: 'Email:'
         },
         {
             type: 'input',
             name: 'officeNumber',
-            message: "Manager's office number:"
+            message: "Office Number:"
         }
     ])
-        .then(({ name, id, email, officeNumber }) => {
-            let newManager = new Manager(name, id, email, officeNumber)
+        .then(({ name, title, id, email, officeNumber }) => {
+            let newManager = new Manager(name, title, id, email, officeNumber)
             console.log(newManager)
             // Pushes manager answers into the team array
             team.push(newManager)
@@ -110,6 +115,11 @@ let engQs = () => {
         },
         {
             type: 'input',
+            name: 'title',
+            message: 'Title:'
+        },
+        {
+            type: 'input',
             name: 'id',
             message: 'Engineer\'s ID:'
         },
@@ -124,8 +134,8 @@ let engQs = () => {
             message: "Github username:"
         }
     ])
-        .then(({ name, id, email, github }) => {
-            let newEngineer = new Engineer(name, id, email, github)
+        .then(({ name, title, id, email, github }) => {
+            let newEngineer = new Engineer(name, title, id, email, github)
             console.log(newEngineer)
             // pushes answers from engineer to the team array
             team.push(newEngineer)
@@ -144,6 +154,11 @@ let intQs = () => {
         },
         {
             type: 'input',
+            name: 'title',
+            message: 'Title:'
+        },
+        {
+            type: 'input',
             name: 'id',
             message: 'Intern\'s ID:'
         },
@@ -158,8 +173,8 @@ let intQs = () => {
             message: "School:"
         }
     ])
-        .then(({ name, id, email, school }) => {
-            let newIntern = new Intern(name, id, email, school)
+        .then(({ name, title,  id, email, school }) => {
+            let newIntern = new Intern(name, title, id, email, school)
             console.log(newIntern)
             team.push(newIntern)
             createIntern(newIntern)
@@ -172,9 +187,10 @@ let intQs = () => {
 let createManager = (answers) => {
     appendFileSync('./output/index.html', `
     <div class="card text-white bg-success mb-3" style="max-width: 18rem;">
-        <div class="card-header">Manager</div>
+        <div class="card-header">${answers.title}</div>
             <div class="card-body">
                 <h5 class="card-title">${answers.name}</h5>
+                <p className="card-text">ID: ${answers.id}</p>
                 <p class="card-text">Email: ${answers.email}</p>
                 <p class="card-text">Office Number: ${answers.officeNumber}</p>
         </div>
@@ -191,9 +207,10 @@ let createManager = (answers) => {
 let createEngineer = (answers) => {
     appendFileSync('./output/index.html', `
     <div class="card text-white bg-primary mb-3" style="max-width: 18rem;">
-        <div class="card-header">Engineer</div>
+        <div class="card-header">${answers.title}</div>
             <div class="card-body">
                 <h5 class="card-title">${answers.name}</h5>
+                <p className="card-text">ID: ${answers.id}</p>
                 <p class="card-text">Email: ${answers.email}</p>
                 <p class="card-text">GitHub Username: ${answers.github}</p>
         </div>
@@ -210,9 +227,10 @@ let createEngineer = (answers) => {
 let createIntern = (answers) => {
     appendFileSync('./output/index.html', `
     <div class="card text-white bg-secondary mb-3" style="max-width: 18rem;">
-        <div class="card-header">Intern</div>
+        <div class="card-header">${answers.title}</div>
             <div class="card-body">
                 <h5 class="card-title">${answers.name}</h5>
+                <p className="card-text">ID: ${answers.id}</p>
                 <p class="card-text">Email: ${answers.email}</p>
                 <p class="card-text">School: ${answers.school}</p>
         </div>
