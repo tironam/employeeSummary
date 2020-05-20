@@ -5,7 +5,7 @@ class Intern extends Employee {
         super (name, id, title)
         this.school = school
         this.getSchool = () => {
-            return this.school
+            return school
     }
     this.getRole = () => {
         return 'Intern'
