@@ -57,7 +57,10 @@ const manager = () => {
 } 
 
 const writeManager = (answers) => {
-    appendFileSync('/output/index.html', )
+    appendFileSync('/output/index.html', top)
+        .then(() => {
+            
+        })
 }
 
 // const top = `
