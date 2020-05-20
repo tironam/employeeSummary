@@ -19,14 +19,14 @@ writeFileSync('./output/index.html', `
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Team</title>
+    <title>Team Builder</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
         integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
     <link rel="stylesheet" href="./style.css">
 </head>
 <body>
 <nav class="navbar navbar-dark bg-danger">
-  <span class="navbar-brand mb-0 h1">Navbar</span>
+  <span class="navbar-brand mb-0 h1">Your Team</span>
 </nav>
 <div class="container">
 <div class="row">
@@ -57,7 +57,7 @@ let chooseRole = () => {
                 case 'Intern':
                     intQs()
                     break
-                case 'Finish Roster':
+                case 'Done':
                     stopQs()
                     break
             }
@@ -77,7 +77,7 @@ let manQs = () => {
         {
             type: 'input',
             name: 'title',
-            message: 'Title:'
+            message: 'Manager, Engineer, or Intern?'
         },
         {
             type: 'input',
@@ -116,7 +116,7 @@ let engQs = () => {
         {
             type: 'input',
             name: 'title',
-            message: 'Title:'
+            message: 'Manager, Engineer, or Intern?'
         },
         {
             type: 'input',
@@ -150,12 +150,12 @@ let intQs = () => {
         {
             type: 'input',
             name: 'name',
-            message: 'Inter\'ns Name:'
+            message: 'Intern\'s Name:'
         },
         {
             type: 'input',
             name: 'title',
-            message: 'Title:'
+            message: 'Manager, Engineer, or Intern?'
         },
         {
             type: 'input',
@@ -187,12 +187,12 @@ let intQs = () => {
 let createManager = (answers) => {
     appendFileSync('./output/index.html', `
     <div class="card text-white bg-success mb-3" style="max-width: 18rem;">
-        <div class="card-header">${answers.title}</div>
+        <div class="card-header"><span><i class="fas fa-mug-hot"></i></span> ${answers.title}</div>
             <div class="card-body">
                 <h5 class="card-title">${answers.name}</h5>
-                <p className="card-text">ID: ${answers.id}</p>
-                <p class="card-text">Email: ${answers.email}</p>
-                <p class="card-text">Office Number: ${answers.officeNumber}</p>
+                <p className="card-text"><span><i class="fas fa-id-card"></i></span> ${answers.id}</p>
+                <p class="card-text"><span><i class="fas fa-envelope"></i></span> ${answers.email}</p>
+                <p class="card-text"><span><i class="fas fa-building"></i></span> Office #: ${answers.officeNumber}</p>
         </div>
     </div>
     `, err => {
@@ -207,12 +207,12 @@ let createManager = (answers) => {
 let createEngineer = (answers) => {
     appendFileSync('./output/index.html', `
     <div class="card text-white bg-primary mb-3" style="max-width: 18rem;">
-        <div class="card-header">${answers.title}</div>
+        <div class="card-header"><span><i class="fas fa-keyboard"></i></span> ${answers.title}</div>
             <div class="card-body">
                 <h5 class="card-title">${answers.name}</h5>
-                <p className="card-text">ID: ${answers.id}</p>
-                <p class="card-text">Email: ${answers.email}</p>
-                <p class="card-text">GitHub Username: ${answers.github}</p>
+                <p className="card-text"><span><i class="fas fa-id-card"></i></span> ${answers.id}</p>
+                <p class="card-text"><span><i class="fas fa-envelope"></i></span> ${answers.email}</p>
+                <p class="card-text"><span><i class="fab fa-github"></i></span>  ${answers.github}</p>
         </div>
     </div>
     `, err => {
@@ -227,12 +227,12 @@ let createEngineer = (answers) => {
 let createIntern = (answers) => {
     appendFileSync('./output/index.html', `
     <div class="card text-white bg-secondary mb-3" style="max-width: 18rem;">
-        <div class="card-header">${answers.title}</div>
+        <div class="card-header"><span><i class="fas fa-pencil-alt"></i></span> ${answers.title}</div>
             <div class="card-body">
                 <h5 class="card-title">${answers.name}</h5>
-                <p className="card-text">ID: ${answers.id}</p>
-                <p class="card-text">Email: ${answers.email}</p>
-                <p class="card-text">School: ${answers.school}</p>
+                <p className="card-text"><span><i class="fas fa-id-card"></i></span> ${answers.id}</p>
+                <p class="card-text"><span><i class="fas fa-envelope"></i></span> ${answers.email}</p>
+                <p class="card-text"><span><i class="fas fa-university"></i></span> ${answers.school}</p>
         </div>
     </div>
     `, err => {
@@ -247,6 +247,7 @@ let stopQs = () => {
     appendFileSync('./output/index.html', `
         </div>
         </div>
+        <script src="https://kit.fontawesome.com/a0c937976a.js" crossorigin="anonymous"></script>
         <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
                 integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
                 crossorigin="anonymous"></script>
