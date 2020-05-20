@@ -9,9 +9,6 @@ const { appendFile, writeFile } = require('fs')
 const appendFileSync = promisify(appendFile)
 const writeFileSync = promisify(writeFile)
 
-//define empty array
-let team = []
-
 // Creates the header and upper part of body for the HTML and the file itself
 writeFileSync('./output/index.html', `
 <!DOCTYPE html>
@@ -98,8 +95,6 @@ let manQs = () => {
         .then(({ name, title, id, email, officeNumber }) => {
             let manager = new Manager(name, title, id, email, officeNumber)
             console.log(manager)
-            // Pushes manager answers into the team array
-            team.push(manager)
             newManager(manager)
         })
         .catch(err => console.log(err))
@@ -137,8 +132,6 @@ let engQs = () => {
         .then(({ name, title, id, email, github }) => {
             let engineer = new Engineer(name, title, id, email, github)
             console.log(engineer)
-            // pushes answers from engineer to the team array
-            team.push(engineer)
             newEngineer(engineer)
         })
         .catch(err => console.log(err))
@@ -176,7 +169,6 @@ let intQs = () => {
         .then(({ name, title,  id, email, school }) => {
             let intern = new Intern(name, title, id, email, school)
             console.log(intern)
-            team.push(intern)
             newIntern(intern)
         })
         .catch(err => console.log(err))
