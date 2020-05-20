@@ -4,6 +4,8 @@
 
 This project creates a command line prompt that allows the user to build up a list of their team members. The user answers questions in the terminal, then it delivers them an html file with all of the entered info. 
 
+For the project, I decided to use a list of choices for the user to select the role of the employee from as opposed to just entering employee info. This way, they could be presented with the proper questions to answer based on the role they chose. Despite already knowing which role they've picked, the user still has to enter the title of the employee to meet all the parameters set by the manager or engineer or intern.js files. I initially had it just assign the 
+
 link to GitHub repo for project:
 * <https://github.com/tironam/employeeSummary>
 
