@@ -252,5 +252,6 @@ let stopQs = () => {
         if (err) {
             console.log(err)
         }
+        console.log('http://localhost:3000')
     })
 } 
