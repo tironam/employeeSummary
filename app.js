@@ -94,7 +94,6 @@ let manQs = () => {
     ])
         .then(({ name, title, id, email, officeNumber }) => {
             let manager = new Manager(name, title, id, email, officeNumber)
-            console.log(manager)
             newManager(manager)
         })
         .catch(err => console.log(err))
@@ -131,7 +130,6 @@ let engQs = () => {
     ])
         .then(({ name, title, id, email, github }) => {
             let engineer = new Engineer(name, title, id, email, github)
-            console.log(engineer)
             newEngineer(engineer)
         })
         .catch(err => console.log(err))
@@ -168,7 +166,6 @@ let intQs = () => {
     ])
         .then(({ name, title,  id, email, school }) => {
             let intern = new Intern(name, title, id, email, school)
-            console.log(intern)
             newIntern(intern)
         })
         .catch(err => console.log(err))
@@ -255,5 +252,6 @@ let stopQs = () => {
         if (err) {
             console.log(err)
         }
+        console.log('http://localhost:3000')
     })
 } 
